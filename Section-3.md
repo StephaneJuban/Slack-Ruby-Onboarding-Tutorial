@@ -113,7 +113,6 @@ class API < Sinatra::Base
             # return the same `challenge` value sent to us from Slack
             # to confirm our server's authenticity.
             request_data['challenge']
-          end
           when 'team_join'
             # Event handler for when a user joins a team
             Events.user_join(team_id, event_data)
@@ -121,7 +120,6 @@ class API < Sinatra::Base
             # In the event we receive an event we didn't expect, we'll log it and move on.
             puts "Unexpected event:\n"
             puts JSON.pretty_generate(request_data)
-          end
         end
         # Return HTTP status code 200 so Slack knows we've received the event
         status 200
